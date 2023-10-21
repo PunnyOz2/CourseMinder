@@ -76,9 +76,9 @@ export default function CourseMenu(){
             </Paper>
             <div className='flex flex-col gap-2'>
             {
-            courseList.filter(course => course.group_tags.includes('Web Development')).map((course) => {
+            courseList.filter(course => course.group_tags.includes('Web Development')).map((course,index) => {
                 return (
-                    <CourseCard course={course}/>
+                    <CourseCard course={course} key={index}/>
                 )
             })
             }
