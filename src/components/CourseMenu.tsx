@@ -1,6 +1,7 @@
-import { Paper,Text } from "@mantine/core"
+import { Paper,Switch,Text } from "@mantine/core"
 import { theme } from "@themes/theme"
 import CourseCard from "@components/CourseCard"
+import { useState } from "react"
 
 export default function CourseMenu(){
     // mock data
@@ -64,7 +65,7 @@ export default function CourseMenu(){
             days: [true, false, true, false, true, false, true]
         }
     ]
-    const temp = courseList.filter(course => course.group_tags.includes('Database'))
+    const [isQuick, setIsQuick] = useState(true)
     return (
         <main>
             <Paper shadow="xs" p="xl" bg='orangeapp' className="mb-5">
@@ -74,6 +75,13 @@ export default function CourseMenu(){
                     with shadow
                 </Text>
             </Paper>
+            <div className='flex flex-row-reverse'>
+            {/* <Switch
+                defaultChecked
+                labelPosition="left"
+                label="Quick Link"
+            /> */}
+            </div>
             <div className='flex flex-col gap-2'>
             {
             courseList.filter(course => course.group_tags.includes('Web Development')).map((course,index) => {
