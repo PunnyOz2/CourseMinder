@@ -2,19 +2,11 @@ import { Button, Group, NavLink, Skeleton, Stack } from "@mantine/core";
 import NavSectionLink from "@components/NavSectionLink";
 import { IconSunFilled, IconRepeat, IconChecks, IconBaselineDensitySmall } from '@tabler/icons-react';
 import Link from "next/link";
+import GroupNav from "@components/GroupNav";
+import { Suspense } from "react";
 
 export default function NavSection(){
     // mock data
-    const profileList = [
-        {
-            profilename: 'Personal',
-            groups: [
-                'Database',
-                'Web Development',
-                'Software Engineering'
-            ]
-        }
-    ]
     const courseList = [
         {
             coursename: 'Database Management Systems for beginners',
@@ -98,18 +90,16 @@ export default function NavSection(){
                 />
                 <Skeleton height={1} />
             </div>
-            <div className="flex flex-col grow">
-                {profileList[0].groups.map((group,index) => (
-                    <NavLink 
-                        component={Link} 
-                        href='/' 
-                        label={<span className="text-xl font-semibold">{group}</span>}
-                        leftSection={<span className="text-[1.5rem] font-semibold px-1.5 leading-5">{index+1}</span>}
-                        className="py-3"
-                        key={index}
-                    />
-                ))
-                }
+            <div className="flex flex-col grow mt-5">
+                <Suspense fallback={
+                    <Stack gap="md">
+                        <Skeleton height={40} />
+                        <Skeleton height={40} />
+                        <Skeleton height={40} />
+                    </Stack>
+                } >
+                    <GroupNav />
+                </Suspense>
             </div>
             <Button variant="outline" display='block'>Add Group</Button>
         </main>

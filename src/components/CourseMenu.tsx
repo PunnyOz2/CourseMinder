@@ -2,19 +2,17 @@ import { Paper,Switch,Text } from "@mantine/core"
 import { theme } from "@themes/theme"
 import CourseCard from "@components/CourseCard"
 import { useState } from "react"
+import { useSession } from "next-auth/react";
 
 export default function CourseMenu(){
     // mock data
-    const profileList = [
-        {
-            profilename: 'Personal',
-            groups: [
-                'Database',
-                'Web Development',
-                'Software Engineering'
-            ]
-        }
-    ]
+    const {data: session} = useSession();
+    // async function getCourseList(){
+    //     const response = await fetch(`http://localhost:3000/api/${session?.user.id}/courses`);
+    //     const courseList = await response.json();
+    //     return courseList;
+    // }
+    
     const courseList = [
         {
             coursename: 'Database Management Systems for beginners',
@@ -65,23 +63,25 @@ export default function CourseMenu(){
             days: [true, false, true, false, true, false, true]
         }
     ]
-    const [isQuick, setIsQuick] = useState(true)
+    // const courseList = await getCourseList();
+    // const [isQuick, setIsQuick] = useState(true)
     return (
         <main>
-            <Paper shadow="xs" p="xl" bg='orangeapp' className="mb-5">
-                <Text>Paper is the most basic ui component</Text>
+            {/* For future use */}
+            {/* <Paper shadow="xs" p="xl" bg='orangeapp' className="mb-5">
+                <Text>What should I learn next?</Text>
                 <Text>
-                    Use it to create cards, dropdowns, modals and other components that require background
-                    with shadow
+                    using chatgpt to generate a course
                 </Text>
-            </Paper>
-            <div className='flex flex-row-reverse'>
-            {/* <Switch
+            </Paper> */}
+
+            {/* <div className='flex flex-row-reverse'>
+            <Switch
                 defaultChecked
                 labelPosition="left"
                 label="Quick Link"
-            /> */}
-            </div>
+            />
+            </div> */}
             <div className='flex flex-col gap-2'>
             {
             courseList.filter(course => course.group_tags.includes('Web Development')).map((course,index) => {

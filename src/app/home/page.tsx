@@ -4,6 +4,7 @@ import { AppShell } from '@mantine/core';
 import TopBar from '@components/TopBar';
 import NavSection from '@components/NavSection';
 import CourseMenu from '@components/CourseMenu';
+import CourseModalBtn from '@components/CourseModalBtn';
 
 export default function Home() {
   const [opened, { toggle }] = useDisclosure();
@@ -23,6 +24,7 @@ export default function Home() {
       <AppShell.Main>
         <CourseMenu />
       </AppShell.Main>
+      <CourseModalBtn title='Add course'/>
     </AppShell>
   );
 }

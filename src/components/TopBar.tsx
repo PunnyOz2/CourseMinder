@@ -9,7 +9,7 @@ export default function TopBar({ opened, toggle}: { opened: boolean, toggle: () 
     const theme = useMantineTheme();
     const { data: session } = useSession();
     return (
-        <Group h="100%" px="md" py={-1}>
+        <Group h="100%" py={-1} className="px-2 sm:px-4">
             <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
             <Logo size={30} />
             {/* change the following comment to h1 with themeprimarycolor */}
@@ -19,8 +19,8 @@ export default function TopBar({ opened, toggle}: { opened: boolean, toggle: () 
             </h1>
             <ModeToggleButton/>
             <div className="flex flex-grow flex-row-reverse items-center">
-                <SignOutBtn />
-                <h2 className="px-5 font-semibold">{session?session.user?.name:null}</h2>
+                <div><SignOutBtn /></div>
+                <h2 className="px-5 font-semibold hidden sm:block">{session?session.user?.username:null}</h2>
             </div>
         </Group>
     )   

@@ -1,9 +1,8 @@
 import { Schema, model, models } from 'mongoose';
 
 const CourseSchema = new Schema({
-    creator: {
+    ownerid: {
         type: String,
-        ref: 'User',
         required: true
     },
     profile: {

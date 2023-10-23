@@ -1,16 +1,15 @@
 import { Schema, model, models } from 'mongoose';
 
-const Profileschema = new Schema({
-    profilename: {
-        type: String,
-        required: true
-    },
-    groups: [
-        'Database',
-        'Web Development',
-        'Software Engineering'
-    ]
-})
+// const Profileschema = new Schema({
+//     profilename: {
+//         type: String,
+//         required: true
+//     },
+//     groups: {
+//         type: [String],
+//         required: true
+//     }
+// })
 const UserSchema = new Schema({
     email: {
         type: String,
@@ -25,8 +24,11 @@ const UserSchema = new Schema({
     image: {
         type: String,
     },
-    profile: [Profileschema],
-    })
+    colorScheme: {
+        type: String,
+        default: 'dark'
+    }
+})
     
 const User = models.User || model("User", UserSchema);
 
